@@ -21,6 +21,18 @@ class SelectionSort(SortClass):
 			# the first element         
 			self.input[i], self.input[min_idx] = self.input[min_idx], self.input[i] 
 
+	def switcher_algo_language(self):
+		for key, _ in self.algo_language.items():
+			if "C" == key:
+				self.algo_language["C"] = constant.SELECTION_SORT_C
+				continue
+			if "Java" == key:
+				self.algo_language["Java"] = constant.SELECTION_SORT_JAVA
+				continue
+			if "Python" == key:
+				self.algo_language["Python"] = constant.SELECTION_SORT_PYTHON
+				continue
+
 	def show_sort_arr(self):
 	    print(self.input)	
 
