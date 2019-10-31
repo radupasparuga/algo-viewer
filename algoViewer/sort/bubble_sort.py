@@ -40,9 +40,10 @@ class BubbleSort(SortClass):
             if "Python" == key:
                 self.algo_language["Python"] = constant.BUBBLE_SORT_PYTHON
                 continue
-        for k in self.algo_language.items():
-            print(k)
+
+    def show_sort_arr(self):
+	    print(self.input)
 
 x = BubbleSort(4, 6, 1, 3, 8)
 x.create_algo()
-x.switcher_algo_language()
+x.show_sort_arr()
