@@ -656,3 +656,427 @@ if __name__ == '__main__':
     print("Sorted array is: ", end="\n") 
     printList(arr) 
 """
+
+QUICK_SORT_C = """
+/* C implementation QuickSort */
+#include<stdio.h> 
+  
+// A utility function to swap two elements 
+void swap(int* a, int* b) 
+{ 
+    int t = *a; 
+    *a = *b; 
+    *b = t; 
+} 
+  
+/* This function takes last element as pivot, places 
+   the pivot element at its correct position in sorted 
+    array, and places all smaller (smaller than pivot) 
+   to left of pivot and all greater elements to right 
+   of pivot */
+int partition (int arr[], int low, int high) 
+{ 
+    int pivot = arr[high];    // pivot 
+    int i = (low - 1);  // Index of smaller element 
+  
+    for (int j = low; j <= high- 1; j++) 
+    { 
+        // If current element is smaller than the pivot 
+        if (arr[j] < pivot) 
+        { 
+            i++;    // increment index of smaller element 
+            swap(&arr[i], &arr[j]); 
+        } 
+    } 
+    swap(&arr[i + 1], &arr[high]); 
+    return (i + 1); 
+} 
+  
+/* The main function that implements QuickSort 
+ arr[] --> Array to be sorted, 
+  low  --> Starting index, 
+  high  --> Ending index */
+void quickSort(int arr[], int low, int high) 
+{ 
+    if (low < high) 
+    { 
+        /* pi is partitioning index, arr[p] is now 
+           at right place */
+        int pi = partition(arr, low, high); 
+  
+        // Separately sort elements before 
+        // partition and after partition 
+        quickSort(arr, low, pi - 1); 
+        quickSort(arr, pi + 1, high); 
+    } 
+} 
+  
+/* Function to print an array */
+void printArray(int arr[], int size) 
+{ 
+    int i; 
+    for (i=0; i < size; i++) 
+        printf("%d ", arr[i]); 
+    printf("n"); 
+} 
+  
+// Driver program to test above functions 
+int main() 
+{ 
+    int arr[] = {10, 7, 8, 9, 1, 5}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    quickSort(arr, 0, n-1); 
+    printf("Sorted array: n"); 
+    printArray(arr, n); 
+    return 0; 
+} 
+"""
+
+QUICK_SORT_JAVA = """
+// Java program for implementation of QuickSort 
+class QuickSort 
+{ 
+    /* This function takes last element as pivot, 
+       places the pivot element at its correct 
+       position in sorted array, and places all 
+       smaller (smaller than pivot) to left of 
+       pivot and all greater elements to right 
+       of pivot */
+    int partition(int arr[], int low, int high) 
+    { 
+        int pivot = arr[high];  
+        int i = (low-1); // index of smaller element 
+        for (int j=low; j<high; j++) 
+        { 
+            // If current element is smaller than the pivot 
+            if (arr[j] < pivot) 
+            { 
+                i++; 
+  
+                // swap arr[i] and arr[j] 
+                int temp = arr[i]; 
+                arr[i] = arr[j]; 
+                arr[j] = temp; 
+            } 
+        } 
+  
+        // swap arr[i+1] and arr[high] (or pivot) 
+        int temp = arr[i+1]; 
+        arr[i+1] = arr[high]; 
+        arr[high] = temp; 
+  
+        return i+1; 
+    } 
+  
+  
+    /* The main function that implements QuickSort() 
+      arr[] --> Array to be sorted, 
+      low  --> Starting index, 
+      high  --> Ending index */
+    void sort(int arr[], int low, int high) 
+    { 
+        if (low < high) 
+        { 
+            /* pi is partitioning index, arr[pi] is  
+              now at right place */
+            int pi = partition(arr, low, high); 
+  
+            // Recursively sort elements before 
+            // partition and after partition 
+            sort(arr, low, pi-1); 
+            sort(arr, pi+1, high); 
+        } 
+    } 
+  
+    /* A utility function to print array of size n */
+    static void printArray(int arr[]) 
+    { 
+        int n = arr.length; 
+        for (int i=0; i<n; ++i) 
+            System.out.print(arr[i]+" "); 
+        System.out.println(); 
+    } 
+  
+    // Driver program 
+    public static void main(String args[]) 
+    { 
+        int arr[] = {10, 7, 8, 9, 1, 5}; 
+        int n = arr.length; 
+  
+        QuickSort ob = new QuickSort(); 
+        ob.sort(arr, 0, n-1); 
+  
+        System.out.println("sorted array"); 
+        printArray(arr); 
+    } 
+} 
+"""
+
+QUICK_SORT_PYTHON = """
+# Python program for implementation of Quicksort Sort 
+  
+# This function takes last element as pivot, places 
+# the pivot element at its correct position in sorted 
+# array, and places all smaller (smaller than pivot) 
+# to left of pivot and all greater elements to right 
+# of pivot 
+def partition(arr,low,high): 
+    i = ( low-1 )         # index of smaller element 
+    pivot = arr[high]     # pivot 
+  
+    for j in range(low , high): 
+  
+        # If current element is smaller than the pivot 
+        if   arr[j] < pivot: 
+          
+            # increment index of smaller element 
+            i = i+1 
+            arr[i],arr[j] = arr[j],arr[i] 
+  
+    arr[i+1],arr[high] = arr[high],arr[i+1] 
+    return ( i+1 ) 
+  
+# The main function that implements QuickSort 
+# arr[] --> Array to be sorted, 
+# low  --> Starting index, 
+# high  --> Ending index 
+  
+# Function to do Quick sort 
+def quickSort(arr,low,high): 
+    if low < high: 
+  
+        # pi is partitioning index, arr[p] is now 
+        # at right place 
+        pi = partition(arr,low,high) 
+  
+        # Separately sort elements before 
+        # partition and after partition 
+        quickSort(arr, low, pi-1) 
+        quickSort(arr, pi+1, high) 
+  
+# Driver code to test above 
+arr = [10, 7, 8, 9, 1, 5] 
+n = len(arr) 
+quickSort(arr,0,n-1) 
+print ("Sorted array is:") 
+for i in range(n): 
+    print ("%d" %arr[i]), 
+"""
+
+RADIX_SORT_C = """
+// C++ implementation of Radix Sort 
+#include<iostream> 
+using namespace std; 
+  
+// A utility function to get maximum value in arr[] 
+int getMax(int arr[], int n) 
+{ 
+    int mx = arr[0]; 
+    for (int i = 1; i < n; i++) 
+        if (arr[i] > mx) 
+            mx = arr[i]; 
+    return mx; 
+} 
+  
+// A function to do counting sort of arr[] according to 
+// the digit represented by exp. 
+void countSort(int arr[], int n, int exp) 
+{ 
+    int output[n]; // output array 
+    int i, count[10] = {0}; 
+  
+    // Store count of occurrences in count[] 
+    for (i = 0; i < n; i++) 
+        count[ (arr[i]/exp)%10 ]++; 
+  
+    // Change count[i] so that count[i] now contains actual 
+    //  position of this digit in output[] 
+    for (i = 1; i < 10; i++) 
+        count[i] += count[i - 1]; 
+  
+    // Build the output array 
+    for (i = n - 1; i >= 0; i--) 
+    { 
+        output[count[ (arr[i]/exp)%10 ] - 1] = arr[i]; 
+        count[ (arr[i]/exp)%10 ]--; 
+    } 
+  
+    // Copy the output array to arr[], so that arr[] now 
+    // contains sorted numbers according to current digit 
+    for (i = 0; i < n; i++) 
+        arr[i] = output[i]; 
+} 
+  
+// The main function to that sorts arr[] of size n using  
+// Radix Sort 
+void radixsort(int arr[], int n) 
+{ 
+    // Find the maximum number to know number of digits 
+    int m = getMax(arr, n); 
+  
+    // Do counting sort for every digit. Note that instead 
+    // of passing digit number, exp is passed. exp is 10^i 
+    // where i is current digit number 
+    for (int exp = 1; m/exp > 0; exp *= 10) 
+        countSort(arr, n, exp); 
+} 
+  
+// A utility function to print an array 
+void print(int arr[], int n) 
+{ 
+    for (int i = 0; i < n; i++) 
+        cout << arr[i] << " "; 
+} 
+  
+// Driver program to test above functions 
+int main() 
+{ 
+    int arr[] = {170, 45, 75, 90, 802, 24, 2, 66}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    radixsort(arr, n); 
+    print(arr, n); 
+    return 0; 
+} 
+"""
+
+RADIX_SORT_JAVA = """
+// Radix sort Java implementation 
+import java.io.*; 
+import java.util.*; 
+  
+class Radix { 
+  
+    // A utility function to get maximum value in arr[] 
+    static int getMax(int arr[], int n) 
+    { 
+        int mx = arr[0]; 
+        for (int i = 1; i < n; i++) 
+            if (arr[i] > mx) 
+                mx = arr[i]; 
+        return mx; 
+    } 
+  
+    // A function to do counting sort of arr[] according to 
+    // the digit represented by exp. 
+    static void countSort(int arr[], int n, int exp) 
+    { 
+        int output[] = new int[n]; // output array 
+        int i; 
+        int count[] = new int[10]; 
+        Arrays.fill(count,0); 
+  
+        // Store count of occurrences in count[] 
+        for (i = 0; i < n; i++) 
+            count[ (arr[i]/exp)%10 ]++; 
+  
+        // Change count[i] so that count[i] now contains 
+        // actual position of this digit in output[] 
+        for (i = 1; i < 10; i++) 
+            count[i] += count[i - 1]; 
+  
+        // Build the output array 
+        for (i = n - 1; i >= 0; i--) 
+        { 
+            output[count[ (arr[i]/exp)%10 ] - 1] = arr[i]; 
+            count[ (arr[i]/exp)%10 ]--; 
+        } 
+  
+        // Copy the output array to arr[], so that arr[] now 
+        // contains sorted numbers according to curent digit 
+        for (i = 0; i < n; i++) 
+            arr[i] = output[i]; 
+    } 
+  
+    // The main function to that sorts arr[] of size n using 
+    // Radix Sort 
+    static void radixsort(int arr[], int n) 
+    { 
+        // Find the maximum number to know number of digits 
+        int m = getMax(arr, n); 
+  
+        // Do counting sort for every digit. Note that instead 
+        // of passing digit number, exp is passed. exp is 10^i 
+        // where i is current digit number 
+        for (int exp = 1; m/exp > 0; exp *= 10) 
+            countSort(arr, n, exp); 
+    } 
+  
+    // A utility function to print an array 
+    static void print(int arr[], int n) 
+    { 
+        for (int i=0; i<n; i++) 
+            System.out.print(arr[i]+" "); 
+    } 
+  
+  
+    /*Driver function to check for above function*/
+    public static void main (String[] args) 
+    { 
+        int arr[] = {170, 45, 75, 90, 802, 24, 2, 66}; 
+        int n = arr.length; 
+        radixsort(arr, n); 
+        print(arr, n); 
+    } 
+} 
+"""
+
+RADIX_SORT_PYTHON = """
+# Python program for implementation of Radix Sort 
+  
+# A function to do counting sort of arr[] according to 
+# the digit represented by exp. 
+def countingSort(arr, exp1): 
+  
+    n = len(arr) 
+  
+    # The output array elements that will have sorted arr 
+    output = [0] * (n) 
+  
+    # initialize count array as 0 
+    count = [0] * (10) 
+  
+    # Store count of occurrences in count[] 
+    for i in range(0, n): 
+        index = (arr[i]/exp1) 
+        count[ (index)%10 ] += 1
+  
+    # Change count[i] so that count[i] now contains actual 
+    #  position of this digit in output array 
+    for i in range(1,10): 
+        count[i] += count[i-1] 
+  
+    # Build the output array 
+    i = n-1
+    while i>=0: 
+        index = (arr[i]/exp1) 
+        output[ count[ (index)%10 ] - 1] = arr[i] 
+        count[ (index)%10 ] -= 1
+        i -= 1
+  
+    # Copying the output array to arr[], 
+    # so that arr now contains sorted numbers 
+    i = 0
+    for i in range(0,len(arr)): 
+        arr[i] = output[i] 
+  
+# Method to do Radix Sort 
+def radixSort(arr): 
+  
+    # Find the maximum number to know number of digits 
+    max1 = max(arr) 
+  
+    # Do counting sort for every digit. Note that instead 
+    # of passing digit number, exp is passed. exp is 10^i 
+    # where i is current digit number 
+    exp = 1
+    while max1/exp > 0: 
+        countingSort(arr,exp) 
+        exp *= 10
+  
+# Driver code to test above 
+arr = [ 170, 45, 75, 90, 802, 24, 2, 66] 
+radixSort(arr) 
+  
+for i in range(len(arr)): 
+    print(arr[i]), 
+"""
