@@ -274,3 +274,122 @@ print ("Sorted array")
 for i in range(len(A)): 
     print("%d" %A[i]),  
 """
+
+INSERTION_SORT_C = """
+// C program for insertion sort 
+#include <math.h> 
+#include <stdio.h> 
+  
+/* Function to sort an array using insertion sort*/
+void insertionSort(int arr[], int n) 
+{ 
+    int i, key, j; 
+    for (i = 1; i < n; i++) { 
+        key = arr[i]; 
+        j = i - 1; 
+  
+        /* Move elements of arr[0..i-1], that are 
+          greater than key, to one position ahead 
+          of their current position */
+        while (j >= 0 && arr[j] > key) { 
+            arr[j + 1] = arr[j]; 
+            j = j - 1; 
+        } 
+        arr[j + 1] = key; 
+    } 
+} 
+  
+// A utility function to print an array of size n 
+void printArray(int arr[], int n) 
+{ 
+    int i; 
+    for (i = 0; i < n; i++) 
+        printf("%d ", arr[i]); 
+    printf("\n"); 
+} 
+  
+/* Driver program to test insertion sort */
+int main() 
+{ 
+    int arr[] = { 12, 11, 13, 5, 6 }; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+  
+    insertionSort(arr, n); 
+    printArray(arr, n); 
+  
+    return 0; 
+} 
+"""
+
+INSERTION_SORT_JAVA = """
+// Java program for implementation of Insertion Sort 
+class InsertionSort { 
+    /*Function to sort array using insertion sort*/
+    void sort(int arr[]) 
+    { 
+        int n = arr.length; 
+        for (int i = 1; i < n; ++i) { 
+            int key = arr[i]; 
+            int j = i - 1; 
+  
+            /* Move elements of arr[0..i-1], that are 
+               greater than key, to one position ahead 
+               of their current position */
+            while (j >= 0 && arr[j] > key) { 
+                arr[j + 1] = arr[j]; 
+                j = j - 1; 
+            } 
+            arr[j + 1] = key; 
+        } 
+    } 
+  
+    /* A utility function to print array of size n*/
+    static void printArray(int arr[]) 
+    { 
+        int n = arr.length; 
+        for (int i = 0; i < n; ++i) 
+            System.out.print(arr[i] + " "); 
+  
+        System.out.println(); 
+    } 
+  
+    // Driver method 
+    public static void main(String args[]) 
+    { 
+        int arr[] = { 12, 11, 13, 5, 6 }; 
+  
+        InsertionSort ob = new InsertionSort(); 
+        ob.sort(arr); 
+  
+        printArray(arr); 
+    } 
+} /* This code is contributed by Rajat Mishra. */
+"""
+
+INSERTION_SORT_PYTHON = """
+# Python program for implementation of Insertion Sort 
+  
+# Function to do insertion sort 
+def insertionSort(arr): 
+  
+    # Traverse through 1 to len(arr) 
+    for i in range(1, len(arr)): 
+  
+        key = arr[i] 
+  
+        # Move elements of arr[0..i-1], that are 
+        # greater than key, to one position ahead 
+        # of their current position 
+        j = i-1
+        while j >= 0 and key < arr[j] : 
+                arr[j + 1] = arr[j] 
+                j -= 1
+        arr[j + 1] = key 
+  
+  
+# Driver code to test above 
+arr = [12, 11, 13, 5, 6] 
+insertionSort(arr) 
+for i in range(len(arr)): 
+    print ("% d" % arr[i]) 
+"""
