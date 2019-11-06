@@ -1,2 +1,4 @@
-def test(request):
-	return HttpResponse("This is a test")
+from django.views.generic import TemplateView
+
+class HomeView(TemplateView):
+	template_name = "./views/home.html"

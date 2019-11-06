@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from algoViewer.views import HomeView
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', HomeView.as_view()),
 ]
