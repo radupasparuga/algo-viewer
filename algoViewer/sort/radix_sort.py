@@ -14,8 +14,8 @@ class RadixSort(SortClass):
 		count = [0] * (10) 
 		# Store count of occurrences in count[] 
 		for i in range(0, n): 
-			index = (self.input[i]/exp1) 
-			count[ (index)%10 ] += 1
+			index = (self.input[i]//exp1) 
+			count[(index)%10] += 1
 	
 		# Change count[i] so that count[i] now contains actual 
 		#  position of this digit in output array 
@@ -25,9 +25,9 @@ class RadixSort(SortClass):
 		# Build the output array 
 		i = n-1
 		while i>=0: 
-			index = (self.input[i]/exp1) 
-			output[ count[ (index)%10 ] - 1] = self.input[i] 
-			count[ (index)%10 ] -= 1
+			index = (self.input[i]//exp1) 
+			output[count[(index)%10] - 1] = self.input[i] 
+			count[(index)%10] -= 1
 			i -= 1
 	
 		# Copying the output array to arr[], 
