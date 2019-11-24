@@ -5,3 +5,9 @@ class HomeView(TemplateView):
 
 class SortView(TemplateView):
 	template_name = "sort.html"
+
+class PathfindingView(TemplateView):
+	template_name= "pathfinding.html"
+
+class SearchView(TemplateView):
+	template_name= "search.html"
