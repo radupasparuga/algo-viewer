@@ -6,6 +6,9 @@ class MergeSort(SortClass):
 		super().__init__(*argv)
 		print(self.input)
 
+	def set_array(self, *argv):
+			self.input = list(argv)
+
 	def create_algo(self, arr):
 		if len(arr) >1: 
 			mid = len(arr)//2 #Finding the mid of the array 

@@ -6,6 +6,9 @@ class InsertionSort(SortClass):
 		super().__init__(*argv)
 		print(self.input)
 	
+	def set_array(self, *argv):
+			self.input = list(argv)
+    
 	def create_algo(self):
 		# Traverse through 1 to len(arr) 
 		for i in range(1, len(self.input)): 

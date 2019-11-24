@@ -1,7 +1,9 @@
 class SortClass:
-    def __init__(self, *argv):
+    def __init__(self):
         self.algo_language = {"C": None, "Java": None, "Python": None}
-        self.input = list(argv)
+
+    def set_array(self, *argv):
+        raise Exception("set_array is not implemented in SortClass")
 
     def show_sort_arr(self):
         raise Exception("show_sort_arr is not implemented in SortClass")

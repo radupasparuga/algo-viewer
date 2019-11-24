@@ -6,6 +6,9 @@ class QuickSort(SortClass):
 		super().__init__(*argv)
 		print(self.input)
 
+	def set_array(self, *argv):
+			self.input = list(argv)
+    
 	def partition(self, low, high): 
 		i = ( low-1 )         # index of smaller element 
 		pivot = self.input[high]     # pivot 

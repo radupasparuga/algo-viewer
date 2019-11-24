@@ -6,6 +6,9 @@ class RadixSort(SortClass):
 		super().__init__(*argv)
 		print(self.input)
 
+	def set_array(self, *argv):
+			self.input = list(argv)
+
 	def counting_sort(self, exp1):
 		n = len(self.input) 
 		# The output array elements that will have sorted arr 

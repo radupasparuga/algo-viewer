@@ -6,6 +6,9 @@ class SelectionSort(SortClass):
 		super().__init__(*argv)
 		print(self.input)
 	
+	def set_array(self, *argv):
+			self.input = list(argv)
+
 	def create_algo(self):
 		# Traverse through all array elements 
 		for i in range(len(self.input)): 

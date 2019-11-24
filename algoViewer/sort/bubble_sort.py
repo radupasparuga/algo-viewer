@@ -2,9 +2,11 @@ from sort_class import SortClass
 import constant
 
 class BubbleSort(SortClass):
-    def __init__(self, *argv):
-        super().__init__(*argv)
-        print(self.input)
+    def __init__(self):
+        super().__init__()
+
+    def set_array(self, *argv):
+        self.input = list(argv)
 
     def create_algo(self):
         n = len(self.input)
