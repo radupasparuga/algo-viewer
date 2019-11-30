@@ -33,8 +33,9 @@
 
     <!-- File+sort selector -->
     <div class="selector">
-      <form action="actionSort" method="post">
-        <input type="file" name="unsorted">
+      <form method="post">
+        {% csrf_token %}
+        {{ form }}
         <select class="custom-select" name="sort_select">
             <option class="dropdown-item" value="bubble_sort">Bubble sort</option>
             <option class="dropdown-item" value="insertion_sort">Insertion sort</option>
