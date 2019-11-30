@@ -4,7 +4,6 @@ from .constant import QUICK_SORT_C, QUICK_SORT_JAVA, QUICK_SORT_PYTHON
 class QuickSort(SortClass):
 	def __init__(self, *argv):
 		super().__init__(*argv)
-		print(self.input)
 
 	def set_array(self, *argv):
 			self.input = list(argv)

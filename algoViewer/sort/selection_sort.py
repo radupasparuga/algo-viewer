@@ -4,7 +4,6 @@ from .constant import SELECTION_SORT_C, SELECTION_SORT_JAVA, SELECTION_SORT_PYTH
 class SelectionSort(SortClass):
 	def __init__(self, *argv):
 		super().__init__(*argv)
-		print(self.input)
 	
 	def set_array(self, *argv):
 			self.input = list(argv)

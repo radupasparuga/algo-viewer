@@ -4,7 +4,6 @@ from .constant import RADIX_SORT_C, RADIX_SORT_JAVA, RADIX_SORT_PYTHON
 class RadixSort(SortClass):
 	def __init__(self, *argv):
 		super().__init__(*argv)
-		print(self.input)
 
 	def set_array(self, *argv):
 			self.input = list(argv)

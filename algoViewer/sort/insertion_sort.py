@@ -4,7 +4,6 @@ from .constant import INSERTION_SORT_C, INSERTION_SORT_JAVA, INSERTION_SORT_PYTH
 class InsertionSort(SortClass):
 	def __init__(self):
 		super().__init__()
-		print(self.input)
 	
 	def set_array(self, *argv):
 			self.input = list(argv)
