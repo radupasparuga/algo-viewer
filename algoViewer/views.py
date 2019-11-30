@@ -11,6 +11,7 @@ def sort_file(request):
 	else:
 		form = SortForm()
 	return render(request, 'sort.html', {'form': form})
+
 class HomeView(TemplateView):
 	template_name = "home.html"
 

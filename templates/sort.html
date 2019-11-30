@@ -36,14 +36,6 @@
       <form method="post">
         {% csrf_token %}
         {{ form }}
-        <select class="custom-select" name="sort_select">
-            <option class="dropdown-item" value="bubble_sort">Bubble sort</option>
-            <option class="dropdown-item" value="insertion_sort">Insertion sort</option>
-            <option class="dropdown-item" value="merge_sort">Merge sort</option>
-            <option class="dropdown-item" value="quick_sort">Quick sort</option>
-            <option class="dropdown-item" value="radix_sort">Radix sort</option>
-            <option class="dropdown-item" value="selection_sort">Selection sort</option>
-        </select>
         <input type="submit" value="Submit">
         <button>Export</button>
       </form>
