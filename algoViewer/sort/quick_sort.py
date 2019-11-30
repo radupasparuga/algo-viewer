@@ -1,5 +1,5 @@
-from sort_class import SortClass
-import constant
+from algoViewer.sort.sort_class import SortClass
+from .constant import QUICK_SORT_C, QUICK_SORT_JAVA, QUICK_SORT_PYTHON
 
 class QuickSort(SortClass):
 	def __init__(self, *argv):
@@ -38,18 +38,14 @@ class QuickSort(SortClass):
 	def switcher_algo_language(self):
 		for key, _ in self.switcher_algo_language.items():
 			if "C" == key:
-				self.algo_language["C"] = constant.QUICK_SORT_C
+				self.algo_language["C"] = QUICK_SORT_C
 				continue
 			if "Java" == key:
-				self.algo_language["Java"] = constant.QUICK_SORT_JAVA
+				self.algo_language["Java"] = QUICK_SORT_JAVA
 				continue
 			if "Python" == key:
-				self.algo_laungauge["Python"] = constant.QUICK_SORT_PYTHON
+				self.algo_laungauge["Python"] = QUICK_SORT_PYTHON
 				continue
 			
 	def show_sort_arr(self):
 		print(self.input)
-
-x = QuickSort(4, 6, 1, 3, 8)
-x.create_algo(0, 4)
-x.show_sort_arr()

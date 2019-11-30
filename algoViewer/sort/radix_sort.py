@@ -1,5 +1,5 @@
-from sort_class import SortClass
-import constant
+from algoViewer.sort.sort_class import SortClass
+from .constant import RADIX_SORT_C, RADIX_SORT_JAVA, RADIX_SORT_PYTHON
 
 class RadixSort(SortClass):
 	def __init__(self, *argv):
@@ -53,8 +53,3 @@ class RadixSort(SortClass):
 
 	def show_sort_arr(self):
 		print(self.input)
-
-
-x = RadixSort(4, 5, 1, 3, 8)
-x.create_algo()
-x.show_sort_arr()

@@ -1,5 +1,5 @@
-from sort_class import SortClass
-import constant
+from algoViewer.sort.sort_class import SortClass
+from .constant import SELECTION_SORT_C, SELECTION_SORT_JAVA, SELECTION_SORT_PYTHON
 
 class SelectionSort(SortClass):
 	def __init__(self, *argv):
@@ -27,18 +27,14 @@ class SelectionSort(SortClass):
 	def switcher_algo_language(self):
 		for key, _ in self.algo_language.items():
 			if "C" == key:
-				self.algo_language["C"] = constant.SELECTION_SORT_C
+				self.algo_language["C"] = SELECTION_SORT_C
 				continue
 			if "Java" == key:
-				self.algo_language["Java"] = constant.SELECTION_SORT_JAVA
+				self.algo_language["Java"] = SELECTION_SORT_JAVA
 				continue
 			if "Python" == key:
-				self.algo_language["Python"] = constant.SELECTION_SORT_PYTHON
+				self.algo_language["Python"] = SELECTION_SORT_PYTHON
 				continue
 
 	def show_sort_arr(self):
 	    print(self.input)	
-
-x = SelectionSort(4, 6, 1, 3, 8)
-x.create_algo()
-x.show_sort_arr()

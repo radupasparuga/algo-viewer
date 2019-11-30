@@ -1,9 +1,9 @@
-from sort_class import SortClass
-import constant
+from algoViewer.sort.sort_class import SortClass
+from .constant import INSERTION_SORT_C, INSERTION_SORT_JAVA, INSERTION_SORT_PYTHON
 
 class InsertionSort(SortClass):
-	def __init__(self, *argv):
-		super().__init__(*argv)
+	def __init__(self):
+		super().__init__()
 		print(self.input)
 	
 	def set_array(self, *argv):
@@ -27,18 +27,14 @@ class InsertionSort(SortClass):
 	def switcher_algo_language(self):
 		for key, _ in self.switcher_algo_language.items():
 			if "C" == key:
-				self.algo_language["C"] = constant.INSERTION_SORT_C
+				self.algo_language["C"] = INSERTION_SORT_C
 				continue
 			if "Java" == key:
-				self.algo_language["Java"] = constant.INSERTION_SORT_JAVA
+				self.algo_language["Java"] = INSERTION_SORT_JAVA
 				continue
 			if "Python" == key:
-				self.algo_language["Python"] = constant.INSERTION_SORT_PYTHON
+				self.algo_language["Python"] = INSERTION_SORT_PYTHON
 				continue
 	
 	def show_sort_arr(self):
 		print(self.input)
-
-x = InsertionSort(4, 6, 1, 3, 8)
-x.create_algo()
-x.show_sort_arr()
