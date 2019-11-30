@@ -1,13 +1,18 @@
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+
+from .handlers import sort_file_handler
 from .forms import SortForm
 
 def sort_file(request):
 	if request.method == 'POST':
-		form = SortForm(request.POST)
+		form = SortForm(request.POST, request.FILES)
 		if form.is_valid():
+			sort_file_handler(form.cleaned_data)
 			return HttpResponseRedirect('/')
+		else:
+			print("data not valid")
 	else:
 		form = SortForm()
 	return render(request, 'sort.html', {'form': form})
