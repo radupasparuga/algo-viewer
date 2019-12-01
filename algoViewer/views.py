@@ -10,7 +10,7 @@ def sort_file(request):
 		form = SortForm(request.POST, request.FILES)
 		if form.is_valid():
 			sort_file_handler(form.cleaned_data)
-			return HttpResponseRedirect('/')
+			return HttpResponseRedirect('/sort')
 		else:
 			print("data not valid")
 	else:
