@@ -13,5 +13,7 @@ def sort_file_handler(formData):
 
   switcher = create_algo_object(num_array)
   switcher[formData["selection"]].create_algo()
-  print(switcher[formData["selection"]].input)
-  print(num_array)
+  f = open("output.txt", "w+")
+  for num in switcher[formData["selection"]].input:
+    f.write(str(num) + ' ')
+  f.close()
