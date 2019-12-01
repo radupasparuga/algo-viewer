@@ -2,11 +2,11 @@ from algoViewer.sort.sort_class import SortClass
 from .constant import RADIX_SORT_C, RADIX_SORT_JAVA, RADIX_SORT_PYTHON
 
 class RadixSort(SortClass):
-	def __init__(self, *argv):
-		super().__init__(*argv)
+	def __init__(self):
+		super().__init__()
 
-	def set_array(self, *argv):
-			self.input = list(argv)
+	def set_array(self, argv):
+			self.input = argv
 
 	def counting_sort(self, exp1):
 		n = len(self.input) 

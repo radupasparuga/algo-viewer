@@ -5,8 +5,8 @@ class InsertionSort(SortClass):
 	def __init__(self):
 		super().__init__()
 	
-	def set_array(self, *argv):
-			self.input = list(argv)
+	def set_array(self, argv):
+			self.input = argv
     
 	def create_algo(self):
 		# Traverse through 1 to len(arr) 

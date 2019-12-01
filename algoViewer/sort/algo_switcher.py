@@ -15,11 +15,13 @@ selection = SelectionSort()
 def create_algo_object(number_array):
   global bubble, insertion, merge, quick, radix, selection
   algo_switcher = {}
-  algo_switcher[bubble.__class__.__name__] = bubble.set_array(number_array)
-  algo_switcher[insertion.__class__.__name__] = insertion.set_array(number_array)
-  algo_switcher[merge.__class__.__name__] = merge.set_array(number_array)
-  algo_switcher[quick.__class__.__name__] = quick.set_array(number_array)
-  algo_switcher[radix.__class__.__name__] = radix.set_array(number_array)
-  algo_switcher[selection.__class__.__name__] = selection.set_array(number_array)
+  algo_switcher[bubble.__class__.__name__] = bubble
+  algo_switcher[insertion.__class__.__name__] = insertion
+  algo_switcher[merge.__class__.__name__] = merge
+  algo_switcher[quick.__class__.__name__] = quick
+  algo_switcher[radix.__class__.__name__] = radix
+  algo_switcher[selection.__class__.__name__] = selection
 
+  for key, value in algo_switcher.items():
+    value.set_array(number_array)
   return algo_switcher

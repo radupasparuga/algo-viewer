@@ -2,11 +2,11 @@ from algoViewer.sort.sort_class import SortClass
 from .constant import SELECTION_SORT_C, SELECTION_SORT_JAVA, SELECTION_SORT_PYTHON
 
 class SelectionSort(SortClass):
-	def __init__(self, *argv):
-		super().__init__(*argv)
+	def __init__(self):
+		super().__init__()
 	
-	def set_array(self, *argv):
-			self.input = list(argv)
+	def set_array(self, argv):
+			self.input = argv
 
 	def create_algo(self):
 		# Traverse through all array elements 

@@ -2,11 +2,11 @@ from algoViewer.sort.sort_class import SortClass
 from .constant import QUICK_SORT_C, QUICK_SORT_JAVA, QUICK_SORT_PYTHON
 
 class QuickSort(SortClass):
-	def __init__(self, *argv):
-		super().__init__(*argv)
+	def __init__(self):
+		super().__init__()
 
-	def set_array(self, *argv):
-			self.input = list(argv)
+	def set_array(self, argv):
+			self.input = argv
     
 	def partition(self, low, high): 
 		i = ( low-1 )         # index of smaller element 
