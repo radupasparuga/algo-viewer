@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from .handlers import sort_file_handler
@@ -10,7 +11,9 @@ def sort_file(request):
 		form = SortForm(request.POST, request.FILES)
 		if form.is_valid():
 			sort_file_handler(form.cleaned_data)
-			return HttpResponseRedirect('/sort')
+			response = HttpResponse()
+			response['Content-Disposition'] = 'attachment; filename="output.txt"'
+			return response
 		else:
 			print("data not valid")
 	else:
