@@ -1,7 +1,6 @@
 from algoViewer.sort.algo_switcher import create_algo_object
 
 def sort_file_handler(formData):
-  print(formData)
   data = formData["file"].read()
   data = str(data)[2:-1]
   # TODO regex

@@ -1,7 +1,9 @@
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+from django.utils.encoding import smart_str
 from django.shortcuts import render
+import os.path
 
 from .handlers import sort_file_handler
 from .forms import SortForm
@@ -11,7 +13,10 @@ def sort_file(request):
 		form = SortForm(request.POST, request.FILES)
 		if form.is_valid():
 			sort_file_handler(form.cleaned_data)
-			response = HttpResponse()
+			file_location = 'output.txt'
+			with open(file_location, 'r') as f:
+				file_data = f.read()
+			response = HttpResponse(file_data, content_type='application/force-download')
 			response['Content-Disposition'] = 'attachment; filename="output.txt"'
 			return response
 		else:
