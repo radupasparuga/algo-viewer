@@ -9,7 +9,7 @@ def sort_file_handler(formData):
     if string.isdigit():
       num_array.append(int(string))
     else:
-      print("there's an error")
+      return 1
 
   switcher = create_algo_object(num_array)
   switcher[formData["selection"]].create_algo()
@@ -17,3 +17,5 @@ def sort_file_handler(formData):
   for num in switcher[formData["selection"]].input:
     f.write(str(num) + ' ')
   f.close()
+  
+  return 0

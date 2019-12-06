@@ -35,6 +35,9 @@
     <div class="selector">
       <form method="post" enctype=multipart/form-data>
         {% csrf_token %}
+        {% if is_error %}
+          {{ error_message }}
+        {% endif %}
         {{ form }}
         <input type="submit" value="Submit">
         <button>Export</button>
