@@ -27,17 +27,20 @@ def sort_file(request):
 			is_error = sort_file_handler(file_data, form.cleaned_data["selection"])
 			if is_error == 0:
 				array = str(file_data)[2:-1]
-				data = {
-					"array": array,
-					"sort":  form.cleaned_data["selection"]
+				variables = {
+					'form': SortForm(),
+					'error_message': "The input is not formatted properly, please re-check your input!",
+					'is_error':  is_error,
+					'array': array,
+					'sort': form.cleaned_data["selection"]
 				}
-				return JsonResponse(data)
+				return render(request, 'sort.html', variables)
 	else:
 		form = SortForm()
 	variables = {
 		'form': form,
 		'error_message': "The input is not formatted properly, please re-check your input!",
-		'is_error':  is_error
+		'is_error':  is_error,
 	}
 	return render(request, 'sort.html', variables)
 
