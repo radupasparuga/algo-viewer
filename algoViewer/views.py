@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.utils.encoding import smart_str
 from django.shortcuts import render
 import os.path
@@ -8,28 +9,35 @@ import os.path
 from .handlers import sort_file_handler
 from .forms import SortForm
 
+def download_sorted_file(request):
+	file_location = 'output.txt'
+	with open(file_location, 'r') as f:
+		file_data = f.read()
+	response = HttpResponse(file_data, content_type='application/force-download')
+	response['Content-Disposition'] = 'attachment; filename="output.txt"'
+	return response
+
 def sort_file(request):
 	file_data = ""
 	is_error = 0
 	if request.method == 'POST':
 		form = SortForm(request.POST, request.FILES)
 		if form.is_valid():
-			is_error = sort_file_handler(form.cleaned_data)
+			file_data = form.cleaned_data["file"].read()
+			is_error = sort_file_handler(file_data, form.cleaned_data["selection"])
 			if is_error == 0:
-				file_location = 'output.txt'
-				with open(file_location, 'r') as f:
-					file_data = f.read()
-				print(file_data)
-				response = HttpResponse(file_data, content_type='application/force-download')
-				response['Content-Disposition'] = 'attachment; filename="output.txt"'
-				return response
+				array = str(file_data)[2:-1]
+				data = {
+					"array": array,
+					"sort":  form.cleaned_data["selection"]
+				}
+				return JsonResponse(data)
 	else:
 		form = SortForm()
 	variables = {
 		'form': form,
 		'error_message': "The input is not formatted properly, please re-check your input!",
-		'is_error':  is_error,
-		'data': file_data
+		'is_error':  is_error
 	}
 	return render(request, 'sort.html', variables)
 
