@@ -62,7 +62,7 @@
       var bar = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ["1", "2", "3", "4"],
+          labels: array.split(' '),
           datasets: [
             {
               label: "numbers",
@@ -70,7 +70,11 @@
             }
           ]
         },
-        options: {}
+        options: {
+          legend: { display: false },
+          title: {
+            display: false,
+          }}
       });
     </script>
   </body>
