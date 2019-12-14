@@ -54,12 +54,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
       var array = "{{ array }}"
-      var data = array.split(' ')
+      var data = array.split(' ').map(function(item) {
+        return parseInt(item, 10)
+      })
       console.log(data)
       var ctx = document.getElementById('sortAnimation').getContext('2d');
       var bar = new Chart(ctx, {
         type: 'bar',
-        data: data,
+        data: {
+          labels: ["1", "2", "3", "4"],
+          datasets: [
+            {
+              label: "numbers",
+              data: data
+            }
+          ]
+        },
         options: {}
       });
     </script>
