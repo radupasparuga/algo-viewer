@@ -8,6 +8,59 @@
     <!-- Bootstrap cdn -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
+  <style>
+  .chart-wrap {
+    margin-left: 50px;
+    font-family: sans-serif;
+    height: 650px;
+    width: 300px;
+  }
+  .chart-wrap.vertical .grid {
+    transform: translateY(-175px) translateX(175px) rotate(-90deg);
+  }
+  .chart-wrap.vertical .grid .bar::after {
+    transform: translateY(-50%) rotate(90deg);
+    display: block;
+  }
+  .chart-wrap .grid {
+    position: relative;
+    padding: 5px 0 5px 0;
+    height: 100%;
+    width: 100%;
+    border-left: 2px solid #aaa;
+  }
+  .chart-wrap .grid::before {
+    font-size: 0.8em;
+    content: '0%';
+    position: absolute;
+    left: -0.5em;
+    top: -1.5em;
+  }
+  .chart-wrap .grid::after {
+    font-size: 0.8em;
+    content: '100%';
+    position: absolute;
+    right: -1.5em;
+    top: -1.5em;
+  }
+  .chart-wrap .bar {
+    width: var(--bar-value);
+    height: 50px;
+    margin: 30px 0;
+    background-color: #2A2D34;
+    border-radius: 0 3px 3px 0;
+  }
+  .chart-wrap .bar:hover {
+    opacity: 0.7;
+  }
+  .chart-wrap .bar::after {
+    content: attr(data-name);
+    margin-left: 100%;
+    padding: 10px;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  </style>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,9 +98,9 @@
     </div>
 
     <!-- Sort animation -->
-    <canvas id="sortAnimation"></canvas>
-    <!-- Chart.js cdn -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <div class="chart-wrap vertical">
+      <div class="grid" id="sortBars"> </div>
+    </div>
     <!--Bootsrap js cdn -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -57,25 +110,14 @@
       var data = array.split(' ').map(function(item) {
         return parseInt(item, 10)
       })
-      console.log(data)
-      var ctx = document.getElementById('sortAnimation').getContext('2d');
-      var bar = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: array.split(' '),
-          datasets: [
-            {
-              label: "numbers",
-              data: data
-            }
-          ]
-        },
-        options: {
-          legend: { display: false },
-          title: {
-            display: false,
-          }}
-      });
+      var bars = document.getElementById('sortBars');
+      for(var i = 0; i < data.length; ++i) {
+        var div = document.createElement("div");
+        div.setAttribute('class', 'bar');
+        div.setAttribute('style', '--bar-value:'+data[i]+'%;');
+        div.setAttribute('data-name', data[i]);
+        bars.appendChild(div);
+      }
     </script>
   </body>
 </html>
