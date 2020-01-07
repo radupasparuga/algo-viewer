@@ -110,11 +110,15 @@
       var data = array.split(' ').map(function(item) {
         return parseInt(item, 10)
       })
+      var max = Math.max(...data);
+      var min = Math.min(...data);
+      var top_value = max - min;
       var bars = document.getElementById('sortBars');
       for(var i = 0; i < data.length; ++i) {
         var div = document.createElement("div");
         div.setAttribute('class', 'bar');
-        div.setAttribute('style', '--bar-value:'+data[i]+'%;');
+        var percentage = ((data[i] - min) / top_value) * 100;
+        div.setAttribute('style', '--bar-value:'+percentage+'%;');
         div.setAttribute('data-name', data[i]);
         bars.appendChild(div);
       }
