@@ -118,6 +118,9 @@
         var div = document.createElement("div");
         div.setAttribute('class', 'bar');
         var percentage = ((data[i] - min) / top_value) * 100;
+        if((data[i] - min) == 0) {
+          percentage = 1;
+        }
         div.setAttribute('style', '--bar-value:'+percentage+'%;');
         div.setAttribute('data-name', data[i]);
         bars.appendChild(div);
