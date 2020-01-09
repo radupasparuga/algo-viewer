@@ -36,9 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'channels',
-    'channels_redis'
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
@@ -68,19 +66,6 @@ TEMPLATES = [
         },
     },
 ]
-
-ASGI_APPLICATION = "algoViewer.routing.application"
-WSGI_APPLICATION = 'algoViewer.wsgi.application'
-
-#Channel Layers
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("redis-server-name", 6379)],
-        },
-    },
-}
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
