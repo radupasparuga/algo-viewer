@@ -1,5 +1,9 @@
-from channels.routing import ProtocolTypeRouter
+from django.urls import path
+from channels.routing import ProtocolTypeRouter, URLRouter
+from . import consumers
 
 application = ProtocolTypeRouter({
-    # Empty for now (http->django views is added by default)
+    "websocket": URLRouter([
+        path("ws/ticks/", consumers.TicksSyncConsumer),
+    ]),
 })
