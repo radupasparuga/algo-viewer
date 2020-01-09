@@ -106,14 +106,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
+      var ws_url = 'ws://' + window.location.host + '/ws/ticks/';
+      var ticksSocket = new WebSocket(ws_url);
+
+      ticksSocket.onmessage = function(event) {
+          var data = JSON.parse(event.data);
+          console.log('data', data);
+          // do whatever required with received data ...
+      };
+
       var array = "{{ array }}"
       var data = array.split(' ').map(function(item) {
         return parseInt(item, 10)
       })
+
       var max = Math.max(...data);
       var min = Math.min(...data);
       var top_value = max - min;
+
       var bars = document.getElementById('sortBars');
+      
       for(var i = 0; i < data.length; ++i) {
         var div = document.createElement("div");
         div.setAttribute('class', 'bar');
