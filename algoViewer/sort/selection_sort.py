@@ -9,6 +9,7 @@ class SelectionSort(SortClass):
 			self.input = argv
 
 	def create_algo(self):
+		sort_steps = []
 		# Traverse through all array elements 
 		for i in range(len(self.input)): 
 			
@@ -22,6 +23,8 @@ class SelectionSort(SortClass):
 			# Swap the found minimum element with  
 			# the first element         
 			self.input[i], self.input[min_idx] = self.input[min_idx], self.input[i] 
+			sort_steps.append([i, min_idx])
+		return sort_steps
 
 	def switcher_algo_language(self):
 		for key, _ in self.algo_language.items():

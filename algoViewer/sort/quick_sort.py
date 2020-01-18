@@ -24,7 +24,7 @@ class QuickSort(SortClass):
 		self.input[i+1], self.input[high] = self.input[high], self.input[i+1] 
 		return ( i+1 ) 
 
-	def create_algo(self, low, high):
+	def create_algo(self, low, high): #TODO make algo work
 		if low < high: 
 			# pi is partitioning index, arr[p] is now 
 			# at right place 

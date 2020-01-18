@@ -1,7 +1,7 @@
 from algoViewer.sort.sort_class import SortClass
 from .constant import MERGE_SORT_C, MERGE_SORT_JAVA, MERGE_SORT_PYTHON
 
-class MergeSort(SortClass):
+class MergeSort(SortClass): # TODO: make algo work 
 	def __init__(self):
 		super().__init__()
 
