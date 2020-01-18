@@ -6,7 +6,7 @@ from django.utils.encoding import smart_str
 from django.shortcuts import render
 import os.path
 
-from .handlers import sort_file_handler
+from .handlers import sort_file_handler, get_path
 from .forms import SortForm
 
 def download_sorted_file(request):
@@ -25,6 +25,7 @@ def sort_file(request):
 		if form.is_valid():
 			file_data = form.cleaned_data["file"].read()
 			is_error = sort_file_handler(file_data, form.cleaned_data["selection"])
+			path = get_path(file_data, form.cleaned_data["selection"])
 			if is_error == 0:
 				array = str(file_data)[2:-1]
 				variables = {
@@ -32,7 +33,8 @@ def sort_file(request):
 					'error_message': "The input is not formatted properly, please re-check your input!",
 					'is_error':  is_error,
 					'array': array,
-					'sort': form.cleaned_data["selection"]
+					'sort': form.cleaned_data["selection"],
+					'path': path
 				}
 				return render(request, 'sort.html', variables)
 	else:

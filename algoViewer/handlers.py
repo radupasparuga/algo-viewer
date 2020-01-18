@@ -1,6 +1,6 @@
 from algoViewer.sort.algo_switcher import create_algo_object
 
-def sort_file_handler(data, selection):
+def clean_data(data):
   data = str(data)[2:-1]
   data_parsed = data.split(' ')
   num_array = []
@@ -9,12 +9,16 @@ def sort_file_handler(data, selection):
       num_array.append(int(string))
     else:
       return 1
+  return num_array
 
+def get_path(data, selection): 
+  num_array = clean_data(data)
+  switcher = create_algo_object(num_array)
+  return switcher[selection].create_algo()
+
+def sort_file_handler(data, selection):
+  num_array = clean_data(data)
   switcher = create_algo_object(num_array)
   switcher[selection].create_algo()
-  f = open("output.txt", "w+")
-  for num in switcher[selection].input:
-    f.write(str(num) + ' ')
-  f.close()
   
   return 0
