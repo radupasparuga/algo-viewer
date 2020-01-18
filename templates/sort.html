@@ -43,6 +43,7 @@
       </form>
     </div>
 
+    <button onclick="applySort()">Sort!</button>
     <!-- Sort animation -->
     <div class="chart-wrap vertical">
       <div class="grid" id="sortBars"> </div>
@@ -68,8 +69,12 @@
       var bars = document.getElementById('sortBars');
 
       function applySort() {
-        for(var step = 0; step < path.length; step++) {
-          console.log(path[step])
+        for(var step = 0; step < path.length; step+=2) {
+          var first = document.getElementById(percentages[path[step]]), 
+              second = document.getElementById(percentages[path[step+1]]);
+          aux = first.style.order ;
+          first.style.order = second.style.order
+          second.style.order = aux;
         }
       }
 
@@ -77,12 +82,12 @@
         var div = document.createElement("div");
         div.setAttribute('class', 'bar');
         var percentage = ((data[i] - min) / top_value) * 100 + 1;
-        div.setAttribute('style', '--bar-value:'+percentage+'%;');
+        percentages[i] = percentage;
+        div.setAttribute('style', '--bar-value:'+percentage+'%;order:'+i+';');
         div.setAttribute('data-name', data[i]);
         div.setAttribute('id', percentage);
         bars.appendChild(div);
       }
-      applySort()
     </script>
   </body>
 </html>
