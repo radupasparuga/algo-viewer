@@ -68,14 +68,25 @@
       var top_value = max - min;
       var bars = document.getElementById('sortBars');
 
+      function switch_values(step) {
+        var first = document.getElementById(percentages[path[step]]), 
+        second = document.getElementById(percentages[path[step+1]]);
+        aux = first.style.order ;
+        first.style.order = second.style.order;
+        second.style.order = aux;
+        aux = percentages[path[step]];
+        percentages[path[step]] = percentages[path[step+1]];
+        percentages[path[step+1]] = aux;  
+      }
+      var step = 0;
       function applySort() {
-        for(var step = 0; step < path.length; step+=2) {
-          var first = document.getElementById(percentages[path[step]]), 
-              second = document.getElementById(percentages[path[step+1]]);
-          aux = first.style.order ;
-          first.style.order = second.style.order
-          second.style.order = aux;
-        }
+        setTimeout(function () {    //  call a 3s setTimeout when the loop is called
+          switch_values(step)          //  your code here
+          step+=2;                     //  increment the counter
+          if (step < path.length) {            //  if the counter < 10, call the loop function
+            applySort();             //  ..  again which will trigger another 
+          }                        //  ..  setTimeout()
+        }, 1000)
       }
 
       for(var i = 0; i < data.length; ++i) {
