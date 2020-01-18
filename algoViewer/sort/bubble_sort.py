@@ -22,7 +22,7 @@ class BubbleSort(SortClass):
                 # found is greater than the
                 # next element
                 if self.input[j] > self.input[j+1] :
-                    pair = (j, j+1)
+                    pair = [j, j+1]
                     sort_steps.append(pair)
                     self.input[j], self.input[j+1] = self.input[j+1], self.input[j]
                     swapped = True

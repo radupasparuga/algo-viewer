@@ -53,8 +53,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
       var array = "{{ array }}"
-      var path = "{{ path }}"
-      console.log(path)
+      var raw_path = "{{ path }}"
+      var path = raw_path.split(' ').map(function(item) {
+        item = item.replace(/\D/g,'');
+        return parseInt(item, 10);
+      })
       var data = array.split(' ').map(function(item) {
         return parseInt(item, 10)
       })
@@ -62,8 +65,13 @@
       var max = Math.max(...data);
       var min = Math.min(...data);
       var top_value = max - min;
-
       var bars = document.getElementById('sortBars');
+
+      function applySort() {
+        for(var step = 0; step < path.length; step++) {
+          console.log(path[step])
+        }
+      }
 
       for(var i = 0; i < data.length; ++i) {
         var div = document.createElement("div");
@@ -74,6 +82,7 @@
         div.setAttribute('id', percentage);
         bars.appendChild(div);
       }
+      applySort()
     </script>
   </body>
 </html>
