@@ -9,6 +9,7 @@ class InsertionSort(SortClass):
 			self.input = argv
     
 	def create_algo(self):
+		sort_steps = []
 		# Traverse through 1 to len(arr) 
 		for i in range(1, len(self.input)): 
 	
@@ -20,8 +21,10 @@ class InsertionSort(SortClass):
 			j = i-1
 			while j >= 0 and key < self.input[j] : 
 					self.input[j + 1] = self.input[j] 
+					sort_steps.append([j+1, j])
 					j -= 1
 			self.input[j + 1] = key 
+		return sort_steps
 	
 	def switcher_algo_language(self):
 		for key, _ in self.switcher_algo_language.items():
