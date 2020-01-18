@@ -80,13 +80,13 @@
       }
       var step = 0;
       function applySort() {
-        setTimeout(function () {    //  call a 3s setTimeout when the loop is called
-          switch_values(step)          //  your code here
-          step+=2;                     //  increment the counter
-          if (step < path.length) {            //  if the counter < 10, call the loop function
-            applySort();             //  ..  again which will trigger another 
-          }                        //  ..  setTimeout()
-        }, 1000)
+        setTimeout(function () {
+          switch_values(step)
+          step+=2;
+          if (step < path.length) {
+            applySort();
+          }
+        }, 400)
       }
 
       for(var i = 0; i < data.length; ++i) {
