@@ -39,6 +39,7 @@ class RadixSort(SortClass):
 			self.input[i] = output[i] 
 	
 	def create_algo(self):
+		sort_steps = []
 		# Find the maximum number to know number of digits 
 		max1 = max(self.input) 
 	
