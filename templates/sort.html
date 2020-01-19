@@ -59,6 +59,7 @@
         item = item.replace(/\D/g,'');
         return parseInt(item, 10);
       })
+      console.log(path)
       var data = array.split(' ').map(function(item) {
         return parseInt(item, 10)
       })
@@ -86,7 +87,7 @@
           if (step < path.length) {
             applySort();
           }
-        }, 400)
+        }, 40)
       }
 
       for(var i = 0; i < data.length; ++i) {
