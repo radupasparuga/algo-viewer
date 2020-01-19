@@ -24,15 +24,19 @@ class QuickSort(SortClass):
 		self.input[i+1], self.input[high] = self.input[high], self.input[i+1] 
 		return ( i+1 ) 
 
-	def create_algo(self, low, high): #TODO make algo work
+	def quick_sort(self, low, high):
 		if low < high: 
 			# pi is partitioning index, arr[p] is now 
 			# at right place 
 			pi = self.partition(low, high) 
 			# Separately sort elements before 
 			# partition and after partition 
-			self.create_algo(low, pi-1) 
-			self.create_algo(pi+1, high) 
+			self.quick_sort(low, pi-1) 
+			self.quick_sort(pi+1, high) 
+		
+	def create_algo(self): 
+		n = len(self.input)
+		self.quick_sort(0, n-1)
 	
 	def switcher_algo_language(self):
 		for key, _ in self.switcher_algo_language.items():
