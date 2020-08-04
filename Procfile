@@ -1,1 +1,1 @@
-web: gunicorn algoViewer/wsgi:application
+web: gunicorn algoViewer.wsgi
