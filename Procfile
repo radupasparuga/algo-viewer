@@ -1,1 +1,1 @@
-web: gunicorn algoViewer/wsgi.py
+web: python manage.py runserver
