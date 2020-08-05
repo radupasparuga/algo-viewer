@@ -2,7 +2,8 @@ from algoViewer.sort.algo_switcher import create_algo_object
 
 def clean_data(data):
   data = str(data)[2:-1]
-  data_parsed = data.split(' ')
+  aux = data.replace('\\r\\n',' ')
+  data_parsed = aux.split()
   num_array = []
   for string in data_parsed:
     if string.isdigit():
